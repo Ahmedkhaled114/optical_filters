@@ -30,42 +30,41 @@ unsigned int weighted_average [][3] =  {{1,1,1},
 
 /** Section: Function declarations **/
 
+float mean_filter (int arr [3][3]);
+float gaussian_filter (int arr [3][3] , float g_arr [3][3]);
 void enter_the_data (int arr_elem_2 [][3] , int size_1 , int size_2);
 void print_arr_elements_2d ( unsigned int arr_elem_2 [][3] , int size_1 , int size_2 );
-int descending_order (int*arr );
-int convert_2d_to_1d(int *arr_2d);
-float mean_filter (int arr [3][3]);
-int median_filter (int * arr);
-float gaussian_filter (int arr [3][3] , float g_arr [3][3]);
 float weighted_average_filter (int arr [3][3] , int g_arr [3][3]);
+int median_filter (int * arr);
 int maximum_filter (int  arr[3][3] );
 int minumim_filter (int  arr[3][3] );
+int descending_order (int*arr );
+int convert_2d_to_1d(int *arr_2d);
+
 
 /** main Function **/
 int main()
 {
-
-
- enter_the_data ( arr , 3 , 3);
+    enter_the_data ( arr , 3 , 3);
 printf("-----------------------------------------\n");
- float var_0 =mean_filter(arr);
- printf ("Element [2][2] for Mean_filter = %0.1f\n" , var_0);
-
-
-int var_1 = median_filter (&arr );
-printf ("Element [2][2] for Median_filter = %i\n" , var_1);
 
 float var_2 = gaussian_filter (arr , gaussian);
 printf ("Element [2][2] for Gaussian_filter = %0.1f\n" , var_2);
 
 float var_3 = weighted_average_filter (arr , weighted_average);
 printf ("Element [2][2] for Weighted_Average_filter = %0.1f\n" , var_3);
+float var_0 =mean_filter(arr);
+ printf ("Element [2][2] for Mean_filter = %0.1f\n" , var_0);
+
+int var_1 = median_filter (&arr );
+printf ("Element [2][2] for Median_filter = %i\n" , var_1);
 
 int var_4 = maximum_filter (arr );
 printf ("Element [2][2] for Maximum_filter  = %i\n" , var_4);
 
 int var_5 = minumim_filter (arr );
 printf ("Element [2][2] for Minumim_filter  = %i\n" , var_5);
+
 
 sleep(300000);
 
@@ -92,8 +91,6 @@ printf("\n");
 }
 
 //------------------------------------------------------------------------------------------
-
-
 
 void enter_the_data (int arr_elem_2 [][3] , int size_1 , int size_2){
          printf("enter_ur_data ...\n");
@@ -136,7 +133,7 @@ float sum = zero_init ;
 
 int median_filter (int * arr ){
 
-  int counter_1,counter_2, temp ;
+  int counter_1 , counter_2, temp ;
 
         for (counter_1 = 0; counter_1 < 9; ++counter_1)
         {
@@ -150,8 +147,8 @@ int median_filter (int * arr ){
                 }
             }
         }
-
-       /* printf("The numbers arranged in descending order \n");
+/*
+        printf("The numbers arranged in descending order\n");
 
         for (counter_1 = 0; counter_1 < 9; ++counter_1)
         {
@@ -168,7 +165,7 @@ float gaussian_filter (int arr [3][3] , float g_arr [3][3]){
 
 unsigned int counter_r=zero_init;
 unsigned int counter_c=zero_init;
-float result_of_product [3][3];
+ float result_of_product [3][3];
 float new_index = zero_init;
 
   for (counter_r=zero_init ; counter_r<3 ; counter_r++){
@@ -177,7 +174,20 @@ float new_index = zero_init;
       * g_arr[counter_r][counter_c] ;
 
         }
+      }
+
+/*
+int counter_1=0 , counter_2=0 ;
+    for ( counter_1=0; counter_1 <3; counter_1++) {
+       for ( counter_2=0; counter_2 < 3 ; counter_2++){
+
+        printf(" result_of_product %f\t", result_of_product [counter_1][counter_2] );
+
+
        }
+printf("\n");
+    }
+*/
 
        for (counter_r=zero_init ; counter_r<3 ; counter_r++){
         for (counter_c =zero_init ; counter_c <3 ; counter_c++){
